@@ -23,8 +23,6 @@ import util
 import math
 import matplotlib.pyplot as plot
 
-# imported_image = cv2.imread('songfestival.jpg')
-# image = cv2.cvtColor(imported_image, cv2.COLOR_BGR2GRAY)
 cactus_image = cv2.cvtColor(cv2.imread(
     'images/cactus.jpg', cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
 festival_image = cv2.cvtColor(cv2.imread(
@@ -178,8 +176,8 @@ def gaussian_blur_image(image: np.ndarray, sigma: float, in_place: bool = False)
                        kernel.shape[1], False, in_place)
 
 
-# blured_image = gaussian_blur_image(festival_image, 4.0)
-# save_img('results/task2.png', blured_image)
+blured_image = gaussian_blur_image(festival_image, 4.0)
+save_img('results/task2.png', blured_image)
 
 """
 
@@ -215,8 +213,8 @@ def separable_gaussian_blur_image(image: np.ndarray, sigma: float, in_place: boo
     return dst_image
 
 
-# blured_image_again = separable_gaussian_blur_image(festival_image, 4.0)
-# save_img('results/task3.png', blured_image_again)
+blured_image_again = separable_gaussian_blur_image(festival_image, 4.0)
+save_img('results/task3.png', blured_image_again)
 
 """
 Task 4: Image derivatives
@@ -267,13 +265,13 @@ def second_deriv_image(image: np.ndarray, sigma: float, in_place: bool = False) 
     return gaussian_blur_image(newImage, sigma, in_place)
 
 
-# first_deriv_x = first_deriv_image_x(cactus_image, 1.0)
-# first_deriv_y = first_deriv_image_y(cactus_image, 1.0)
-# second_deriv = second_deriv_image(cactus_image, 1.0)
+first_deriv_x = first_deriv_image_x(cactus_image, 1.0)
+first_deriv_y = first_deriv_image_y(cactus_image, 1.0)
+second_deriv = second_deriv_image(cactus_image, 1.0)
 
-# save_img('results/task4a.png', first_deriv_x)
-# save_img('results/task4b.png', first_deriv_y)
-# save_img('results/task4c.png', second_deriv)
+save_img('results/task4a.png', first_deriv_x)
+save_img('results/task4b.png', first_deriv_y)
+save_img('results/task4c.png', second_deriv)
 
 """
 Task 5: Image sharpening
@@ -294,8 +292,8 @@ def sharpen_image(image: np.ndarray, sigma: float, alpha: float, in_place: bool 
     return np.clip(result, 0, 255).astype(np.uint8)
 
 
-# sharp_image = sharpen_image(yosemit_image, 1.0, 2.0)
-# save_img('results/task5.png', sharp_image)
+sharp_image = sharpen_image(yosemit_image, 1.0, 1.6)
+save_img('results/task5.png', sharp_image)
 
 
 """
@@ -331,9 +329,9 @@ def sobel_image(image: np.ndarray, in_place: bool = False) -> np.ndarray:
     return magnitude, direction
 
 
-# magnitude, direction = sobel_image(cactus_image)
-# result = magnitude - direction
-# save_img('results/task6.png', result)
+magnitude, direction = sobel_image(cactus_image)
+result = magnitude - direction
+save_img('results/task6.png', result)
 
 """
 Task 7: Bilinear Interpolation
@@ -385,8 +383,8 @@ def rotate_image(image: np.ndarray, rotation_angle: float, in_place: bool = Fals
     return util.rotate_image(bilinear_interpolation, image, rotation_angle, in_place)
 
 
-# rotated_image = rotate_image(yosemit_image, 20.0)
-# save_img('results/task7.png', rotated_image)
+rotated_image = rotate_image(yosemit_image, 20.0)
+save_img('results/task7.png', rotated_image)
 """
 Task 8: Finding edge peaks
 
@@ -441,9 +439,6 @@ def find_peaks_image(image: np.ndarray, thres: float, in_place: bool = False) ->
 
 peaks_image = find_peaks_image(virgintrains_image, 40.0)
 save_img('results/task8.png', peaks_image)
-# plot.figure()
-# plot.imshow(blured_image)
-# plot.show()
 
 """
 Task 9 (a): K-means color clustering with random seeds (extra task)
