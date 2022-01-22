@@ -1,2 +1,4 @@
-# its8030-2021-hw1
+# Computer vision hw1
+
+This task was about using convolution on images
 
